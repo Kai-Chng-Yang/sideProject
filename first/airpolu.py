@@ -1,6 +1,7 @@
 from tkinter import *
 import requests
 from bs4 import BeautifulSoup
+from PIL import Image,ImageTk
 
 
 # link for extract html data
@@ -52,6 +53,7 @@ def airinfo():
 # object of tkinter
 # and background set to grey
 master = Tk()
+master.geometry("800x800")
 master.configure(bg='light grey')
 
 # Variable Classes in tkinter
@@ -118,6 +120,16 @@ Label(master, text="", textvariable=res_remark,
 Label(master, text="", textvariable=res_imp,
 	bg="light grey").grid(row=8, column=1, sticky=W)
 
+#logoLabel top of top_wrapperFrame       
+# Create a photoimage object of the image in the path
+image1 = Image.open("logo.jpg")
+resizeImage = image1.resize((640,480))
+test = ImageTk.PhotoImage(resizeImage)
+label1 = Label(master, image=test)
+
+# Position image
+label1.place(x=80, y=200)
+
 
 # creating a button using the widget
 b = Button(master, text="檢測",#Check
@@ -125,4 +137,4 @@ b = Button(master, text="檢測",#Check
 b.grid(row=0, column=2, columnspan=2,
 	rowspan=2, padx=5, pady=5,)
 
-mainloop()
+master.mainloop()
