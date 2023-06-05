@@ -34,28 +34,28 @@ def tem_curve(data):
  plt.show()
 
 def hum_curve(data):
- """相对湿度曲线绘制"""
+ """相對濕度曲线绘制"""
  hour = list(data['小時'])
  hum = list(data['相對溫度'])
  for i in range(0,24):
   if math.isnan(hum[i]) == True:
    hum[i] = hum[i-1]
- hum_ave = sum(hum)/24     # 求平均相对湿度 
+ hum_ave = sum(hum)/24     # 求平均相對濕度 
  hum_max = max(hum)    
- hum_max_hour = hour[hum.index(hum_max)] # 求最高相对湿度
+ hum_max_hour = hour[hum.index(hum_max)] # 求最高相對濕度
  hum_min = min(hum)
- hum_min_hour = hour[hum.index(hum_min)] # 求最低相对湿度
+ hum_min_hour = hour[hum.index(hum_min)] # 求最低相對濕度
  x = []
  y = []
  for i in range(0, 24):
   x.append(i)
   y.append(hum[hour.index(i)])
  plt.figure(2)
- plt.plot(x,y,color='blue',label='相对濕度')       # 画出相对湿度曲线
- plt.scatter(x,y,color='blue')   # 点出每个时刻的相对湿度
- plt.plot([0, 24], [hum_ave, hum_ave], c='red', linestyle='--',label='平均相對濕度')  # 画出平均相对湿度虚线
- plt.text(hum_max_hour+0.15, hum_max+0.15, str(hum_max), ha='center', va='bottom', fontsize=10.5)  # 标出最高相对湿度
- plt.text(hum_min_hour+0.15, hum_min+0.15, str(hum_min), ha='center', va='bottom', fontsize=10.5)  # 标出最低相对湿度
+ plt.plot(x,y,color='blue',label='相对濕度')       # 画出相對濕度曲线
+ plt.scatter(x,y,color='blue')   # 点出每个时刻的相對濕度
+ plt.plot([0, 24], [hum_ave, hum_ave], c='red', linestyle='--',label='平均相對濕度')  # 画出平均相對濕度虚线
+ plt.text(hum_max_hour+0.15, hum_max+0.15, str(hum_max), ha='center', va='bottom', fontsize=10.5)  # 标出最高相對濕度
+ plt.text(hum_min_hour+0.15, hum_min+0.15, str(hum_min), ha='center', va='bottom', fontsize=10.5)  # 标出最低相對濕度
  plt.xticks(x)
  plt.legend()
  plt.title('一天相對溫度变化曲線圖')
@@ -164,11 +164,11 @@ def calc_corr(a, b):
 def corr_tem_hum(data):
  """温湿度相关性分析"""
  tem = data['温度']
- hum = data['相对湿度']
+ hum = data['相對濕度']
  plt.scatter(tem,hum,color='blue')
  plt.title("温湿度相关性分析图")
  plt.xlabel("温度/℃")
- plt.ylabel("相对湿度/%")
+ plt.ylabel("相對濕度/%")
  plt.text(20,40,"相关系数为："+str(calc_corr(tem,hum)),fontdict={'size':'10','color':'red'})
  plt.show()
  print("相关系数为："+str(calc_corr(tem,hum)))
